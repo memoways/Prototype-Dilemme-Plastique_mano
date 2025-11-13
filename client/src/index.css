@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFFFFF;
+  --background-gradient: linear-gradient(135deg, #FFD6C9 0%, #F6E1F7 50%, #FFFFFF 100%);
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #16a34a;
+  --primary-foreground: #FFFFFF;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #1A1A1A;
+  --muted: #F4E9F7;
+  --muted-foreground: #7A7A7A;
+  --accent: #a855f7;
+  --accent-foreground: #FFFFFF;
+  --destructive: #F9C8C3;
+  --destructive-foreground: #1A1A1A;
+  --border: #E6E6E6;
+  --input: #FDF7F4;
+  --ring: #16a34a;
+  --chart-1: #F9C8C3;
+  --chart-2: #FDD7C2;
+  --chart-3: #E8D7F8;
+  --chart-4: #CDE3FA;
+  --chart-5: #F4E9F7;
+  --sidebar: #FDF7F4;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-primary: #16a34a;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E8D7F8;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E6E6E6;
+  --sidebar-ring: #16a34a;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: 'Fira Code', monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-xl: 0 4px 20px rgba(0,0,0,0.05);
+  --shadow-2xl: 0 4px 20px rgba(0,0,0,0.05);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: #1A1A1A;
+  --background-gradient: linear-gradient(135deg, #2A1A1F 0%, #1F1A2A 50%, #1A1A1A 100%);
+  --foreground: #FFFFFF;
+  --card: #2A2A2A;
+  --card-foreground: #FFFFFF;
+  --popover: #2A2A2A;
+  --popover-foreground: #FFFFFF;
+  --primary: #16a34a;
+  --primary-foreground: #FFFFFF;
+  --secondary: #374151;
+  --secondary-foreground: #FFFFFF;
+  --muted: #3A2A3F;
+  --muted-foreground: #A0A0A0;
+  --accent: #a855f7;
+  --accent-foreground: #FFFFFF;
+  --destructive: #5A3A3F;
+  --destructive-foreground: #FFFFFF;
+  --border: #404040;
+  --input: #2A2A2A;
+  --ring: #16a34a;
+  --chart-1: #5A3A3F;
+  --chart-2: #5A4A3F;
+  --chart-3: #4A3A5F;
+  --chart-4: #3A4A5F;
+  --chart-5: #3A2A3F;
+  --sidebar: #2A2A2A;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #16a34a;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent: #4A3A5F;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #404040;
+  --sidebar-ring: #16a34a;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: 'Fira Code', monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-xl: 0 4px 20px rgba(0,0,0,0.05);
+  --shadow-2xl: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --foreground: hsl(0 0% 0%);
+      --muted-foreground: hsl(0 0% 0%);
+      --border: hsl(0 0% 0%);
+    }
+    
+    .dark {
+      --foreground: hsl(0 0% 100%);
+      --muted-foreground: hsl(0 0% 100%);
+      --border: hsl(0 0% 100%);
+    }
+  }
+
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  /* Desktop-only validation styles */
+  @media (max-width: 1023px) {
+    .desktop-only-notice {
+      display: block !important;
+    }
+    .main-content {
+      display: none !important;
+    }
+  }
+
+  /* Chat interface specific styling */
+  .chat-messages {
+    scroll-behavior: smooth;
+    max-height: calc(100vh - 200px); /* Account for header + input */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  .chat-messages::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
+  /* Ensure media panel stays fixed while chat scrolls */
+  .media-panel-container {
+    height: calc(100vh - 120px);
+    overflow: hidden;
+  }
+
+  /* Split layout containers */
+  .chat-container {
+    height: calc(100vh - 120px);
+    overflow: hidden;
+  }
+
+  .chat-sidebar {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Modern chat bubble tails */
+  .chat-bubble-left::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    bottom: 4px;
+    width: 0;
+    height: 0;
+    border-right: 8px solid #14b8a6;
+    border-top: 8px solid transparent;
+    border-bottom: 0px solid transparent;
+  }
+
+  .chat-bubble-right::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    bottom: 4px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid white;
+    border-top: 8px solid transparent;
+    border-bottom: 0px solid transparent;
+  }
+
+  /* Effets confetti futuristes */
+  .confetti-particle {
+    font-size: 2rem;
+    user-select: none;
+    animation: confetti-glow 2s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .confetti-star {
+    animation: confetti-glow 1.5s ease-in-out infinite alternate,
+               confetti-rotate 3s linear infinite;
+  }
+
+  .confetti-sparkle {
+    animation: confetti-sparkle 0.8s ease-in-out infinite alternate,
+               confetti-pulse 2s ease-in-out infinite;
+  }
+
+  .confetti-crystal {
+    animation: confetti-crystal 2s ease-in-out infinite,
+               confetti-rotate 4s linear infinite reverse;
+  }
+
+  .confetti-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, 
+                rgba(0, 245, 255, 0.1) 0%, 
+                rgba(255, 0, 255, 0.05) 50%, 
+                transparent 70%);
+    animation: confetti-flash-effect 0.5s ease-out;
+    pointer-events: none;
+  }
+
+  @keyframes confetti-glow {
+    0% { 
+      filter: brightness(1) saturate(1);
+      transform: scale(1);
+    }
+    100% { 
+      filter: brightness(1.5) saturate(1.5);
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes confetti-rotate {
+    from { transform: rotate(0deg) scale(var(--scale, 1)); }
+    to { transform: rotate(360deg) scale(var(--scale, 1)); }
+  }
+
+  @keyframes confetti-sparkle {
+    0% { 
+      filter: brightness(1) hue-rotate(0deg);
+      transform: scale(0.8);
+    }
+    50% {
+      filter: brightness(2) hue-rotate(180deg);
+      transform: scale(1.2);
+    }
+    100% { 
+      filter: brightness(1) hue-rotate(360deg);
+      transform: scale(0.8);
+    }
+  }
+
+  @keyframes confetti-pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes confetti-crystal {
+    0% { 
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      filter: brightness(1);
+    }
+    25% {
+      transform: perspective(1000px) rotateX(90deg) rotateY(90deg);
+      filter: brightness(1.5);
+    }
+    50% {
+      transform: perspective(1000px) rotateX(180deg) rotateY(180deg);
+      filter: brightness(2);
+    }
+    75% {
+      transform: perspective(1000px) rotateX(270deg) rotateY(270deg);
+      filter: brightness(1.5);
+    }
+    100% { 
+      transform: perspective(1000px) rotateX(360deg) rotateY(360deg);
+      filter: brightness(1);
+    }
+  }
+
+  @keyframes confetti-flash-effect {
+    0% { 
+      opacity: 1;
+      background: radial-gradient(circle at center, 
+                  rgba(0, 245, 255, 0.3) 0%, 
+                  rgba(255, 0, 255, 0.2) 30%, 
+                  rgba(255, 255, 0, 0.1) 60%,
+                  transparent 70%);
+    }
+    100% { 
+      opacity: 0;
+      background: radial-gradient(circle at center, 
+                  rgba(0, 245, 255, 0.1) 0%, 
+                  rgba(255, 0, 255, 0.05) 50%, 
+                  transparent 70%);
+    }
+  }
+
+  /* Optimisation performance */
+  .confetti-particle {
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+}
