@@ -1,0 +1,28 @@
+================================================================================
+MODIFICATION À FAIRE DANS: client/src/types/chat.ts
+================================================================================
+
+AJOUTER cette ligne dans l'interface ChatMessage:
+
+  isStreaming?: boolean; // NOUVEAU: Indique si le message est en cours de streaming
+
+--------------------------------------------------------------------------------
+CODE COMPLET:
+--------------------------------------------------------------------------------
+
+export interface ChatMessage {
+  id: string;
+  content: string;
+  sender: 'user' | 'peter' | 'debug';
+  timestamp: string;
+  rawJson?: any;
+  metadata?: {
+    hasVideo?: boolean;
+    hasLinks?: boolean;
+    videoUrl?: string;
+    links?: string[];
+  };
+  isStreaming?: boolean; // ← AJOUTER CETTE LIGNE
+}
+
+================================================================================
